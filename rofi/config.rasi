@@ -1,0 +1,10 @@
+configuration {
+    display-drun: "";
+    drun-display-format: "{icon} {name}";
+    display-window: "";
+    modi: "window,run,drun,combi";
+    show-icons: true;
+    font: "DejaVu Sans Mono 12";
+}
+
+@theme "~/.config/rofi/windows11-list-dark.rasi"

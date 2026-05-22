@@ -1,0 +1,15 @@
+vim
+curl
+htop
+tree
+i3-wm
+git
+apt-transport-https
+ca-certificates
+gnupg
+flameshot
+rofi
+arandr
+feh
+zsh
+picom
