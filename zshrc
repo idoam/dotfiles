@@ -295,3 +295,5 @@ source <(kubectl completion zsh)
 source <(helm completion zsh)
 
 alias rg='rg --hidden'
+
+export PATH=$PATH:~/.local/bin/
