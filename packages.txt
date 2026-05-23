@@ -30,6 +30,7 @@ libxkbcommon-x11-dev
 make
 picom
 pkg-config
+python-is-python3
 rofi
 snap
 tree

@@ -26,9 +26,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions          ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
+# docker
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 # kubectl & helm
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.36/deb/Release.key      | sudo gpg --dearmor -o /usr/share/keyrings/kubernetes.gpg
 curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/helm.gpg
+
 sudo chmod 644 /usr/share/keyrings/kubernetes.gpg
 sudo chmod 644 /usr/share/keyrings/helm.gpg
 echo 'deb [signed-by=/usr/share/keyrings/kubernetes.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ /'                | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -37,8 +51,12 @@ sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 sudo chmod 644 /etc/apt/sources.list.d/helm.list
 sudo apt update && sudo apt install -y kubectl helm
 
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # betterlockscreen
 sudo git clone https://github.com/Raymo111/i3lock-color.git /opt/i3lock-color && cd /opt/i3lock-color && ./install-i3lock-color.sh
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
 betterlockscreen --update ~/.config/pictures/leaves.jpg
-betterlockscreen -w
+
+i3-msg restart

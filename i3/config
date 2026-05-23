@@ -14,7 +14,7 @@ smart_gaps on
 # hide borders when only one window
 smart_borders on
 
-exec_always feh --bg-scale .config/leaves.jpg
+exec_always betterlockscreen -w
 
 exec_always --no-startup-id picom --experimental-backends
 exec_always --no-startup-id flameshot
