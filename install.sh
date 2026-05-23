@@ -41,3 +41,4 @@ sudo apt update && sudo apt install -y kubectl helm
 sudo git clone https://github.com/Raymo111/i3lock-color.git /opt/i3lock-color && cd /opt/i3lock-color && ./install-i3lock-color.sh
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
 betterlockscreen --update ~/.config/pictures/leaves.jpg
+betterlockscreen -w
