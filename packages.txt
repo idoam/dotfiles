@@ -3,6 +3,7 @@ arandr
 autoconf
 ca-certificates
 curl
+fd-find
 feh
 flameshot
 gcc
@@ -34,5 +35,9 @@ python-is-python3
 rofi
 snap
 tree
+unzip
 vim
+xclip
+zip
 zsh
+ripgrep

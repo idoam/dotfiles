@@ -54,6 +54,24 @@ sudo apt update && sudo apt install -y kubectl helm
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# neovim
+curl -fLo /tmp/nvim-linux-x86_64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim-linux-x86_64
+sudo tar -C /opt -xzf /tmp/nvim-linux-x86_64.tar.gz
+rm /tmp/nvim-linux-x86_64.tar.gz
+git clone git@github.com:idoam/nvim.git ~/.config/nvim
+
+# node
+PROFILE=/dev/null bash -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh)"
+export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh"
+nvm install --lts
+
+# tree-sitter
+mkdir -p ~/.local/bin
+curl -fL https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.0/tree-sitter-linux-x64.gz \
+  | gunzip > ~/.local/bin/tree-sitter
+chmod +x ~/.local/bin/tree-sitter
+
 # betterlockscreen
 sudo git clone https://github.com/Raymo111/i3lock-color.git /opt/i3lock-color && cd /opt/i3lock-color && ./install-i3lock-color.sh
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
